@@ -1,0 +1,218 @@
+<script>
+
+      function submitForm(sport, isBroadcast) {
+        const button = document.getElementById('submitButton');
+        const date = document.getElementById('gameDate').value;
+        const time = document.getElementById('tipTime').value;
+        const team = document.getElementById('opponentTeam').value.trim();
+        button.classList.add('clicked');
+        let formData = {};
+
+      switch(sport) {
+
+        case 'FB':
+      // FB
+        formData = {
+          sport: 'FB',
+          isBroadcast: false,
+          producer: document.getElementById('producer').value,
+          director: document.getElementById('director').value,
+          ap: document.getElementById('ap').value,
+          td: document.getElementById('td').value,
+          xpr: document.getElementById('xpr').value,
+          dc1: document.getElementById('dc1').value,
+          dc2: document.getElementById('dc2').value,
+          dc3: document.getElementById('dc3').value,
+          dc4: document.getElementById('dc4').value,
+          wx1: document.getElementById('wx1').value,
+          wx2: document.getElementById('wx2').value,
+          wx3: document.getElementById('wx3').value,
+          oots: document.getElementById('oots').value,
+          toc: document.getElementById('toc').value,
+          dakman: document.getElementById('dakman').value,
+          cameras: [
+            document.getElementsByName('cam1')[0].value,
+            document.getElementsByName('cam2')[0].value,
+            document.getElementsByName('cam3')[0].value,
+            document.getElementsByName('cam4')[0].value,
+            document.getElementsByName('cam5')[0].value,
+            document.getElementsByName('cam6')[0].value,
+            document.getElementsByName('cam7')[0].value
+          ]};
+
+        break;
+
+        case 'MBB':
+        case 'WBB':
+
+          if (isBroadcast) {
+          // MBB/WBB BROADCAST *assuming women's is the same*
+            formData = {
+                    sport : 'MBB',
+                    isBroadcast: true,
+                    producer: document.getElementById('producer').value,
+                    director: document.getElementById('director').value,
+                    ad: document.getElementById('ad').value,
+                    td: document.getElementById('td').value,
+                    ap: document.getElementById('ap').value,
+                    xpr: document.getElementById('xpr').value,
+                    bug: document.getElementById('bug').value,
+                    dc1: document.getElementById('dc1').value,
+                    dc2: document.getElementById('dc2').value,
+                    cam3grip: document.getElementById('cam3grip').value,
+                    cam4grip: document.getElementById('cam4grip').value,
+                    cameras: [
+                      document.getElementsByName('cam1')[0].value,
+                      document.getElementsByName('cam2')[0].value,
+                      document.getElementsByName('cam3')[0].value,
+                      document.getElementsByName('cam4')[0].value,
+                      document.getElementsByName('cam5')[0].value,
+                      document.getElementsByName('cam6')[0].value,
+                    ]
+                  };
+
+          } else {
+            //MBB/WBB BIG SCREEN
+            formData = {
+              sport: 'MBB',
+              isBroadcast: false,
+              producer: document.getElementById('producer').value,
+              director: document.getElementById('director').value,
+              td: document.getElementById('td').value,
+              showControl: document.getElementById('showControl').value,
+              xpr: document.getElementById('xpr').value,
+              wx1: document.getElementById('wx1').value,
+              wx2: document.getElementById('wx2').value,
+              slash: document.getElementById('slash').value,
+              dc1: document.getElementById('dc1').value,
+              dc2: document.getElementById('dc2').value,
+              cameras: [
+                document.getElementsByName('cam1')[0].value,
+              ]
+            };
+
+          }
+
+
+        break;
+
+        case 'BSB':
+        case 'SB':
+
+          if (isBroadcast) {
+             // BSB/SB BROADCAST (TOC for sb only)
+          formData = {
+            producer: document.getElementById('producer').value,
+            director: document.getElementById('director').value,
+            ad: document.getElementById('ad').value,
+            ap: document.getElementById('ap').value,
+            td: document.getElementById('td').value,
+            bug: document.getElementById('bug').value,
+            xpr: document.getElementById('xpr').value,
+            dc1: document.getElementById('dc1').value,
+            dc2: document.getElementById('dc2').value,
+            dc3: document.getElementById('dc3').value,
+            toc: document.getElementById('toc').value,
+            cameras: [
+              document.getElementsByName('cam1')[0].value,
+              document.getElementsByName('cam2')[0].value,
+              document.getElementsByName('cam3')[0].value,
+              document.getElementsByName('cam4')[0].value,
+              document.getElementsByName('cam5')[0].value,
+              document.getElementsByName('cam6')[0].value,
+              document.getElementsByName('cam7')[0].value
+            ]
+          };
+
+          } else {
+          // BSB/SB BIG SCREEN
+          formData = {
+            producer: document.getElementById('producer').value,
+            td: document.getElementById('td').value,
+            xpr: document.getElementById('xpr').value,
+            dc1: document.getElementById('dc1').value,
+            wx1: document.getElementById('wx1').value,
+            wx2: document.getElementById('wx2').value,
+            cameras: [
+              document.getElementsByName('cam1')[0].value,
+              document.getElementsByName('cam2')[0].value,
+              document.getElementsByName('cam3')[0].value,
+              document.getElementsByName('cam4')[0].value,
+              document.getElementsByName('cam5')[0].value,
+              document.getElementsByName('cam6')[0].value,
+              document.getElementsByName('cam7')[0].value
+            ]
+          };
+            
+          }
+
+        break;
+
+        case 'SOC':
+        case 'VB':
+        
+          if (isBroadcast) {
+
+            // SOC/VB BROADCAST (grips only for VB)
+          formData = {
+            producer: document.getElementById('producer').value,
+            director: document.getElementById('director').value,
+            ad: document.getElementById('ad').value,
+            ap: document.getElementById('ap').value,
+            xpr: document.getElementById('xpr').value,
+            bug: document.getElementById('bug').value,
+            toc: document.getElementById('toc').value,
+            dc1: document.getElementById('dc1').value,
+            dc2: document.getElementById('dc2').value,
+            cam5grip: document.getElementById('cam5grip').value,
+            cam6grip: document.getElementById('cam6grip').value,
+            cameras: [
+              document.getElementsByName('cam1')[0].value,
+              document.getElementsByName('cam2')[0].value,
+              document.getElementsByName('cam3')[0].value,
+              document.getElementsByName('cam4')[0].value,
+              document.getElementsByName('cam5')[0].value,
+              document.getElementsByName('cam6')[0].value,
+              document.getElementsByName('cam7')[0].value
+            ]
+          };
+
+          } else {
+            
+          }
+
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+        // SOC/VB BIG SCREEN
+
+
+
+
+
+
+
+
+
+
+
+        // Save production data first
+        google.script.run.saveProductionData(formData);
+
+        // Then update game info and close dialog on success
+        google.script.run
+          .withSuccessHandler(() => google.script.host.close())
+          .handleStartupForm(date, time, team, formData.sport, formData.isBroadcast);
+    }
+    </script>

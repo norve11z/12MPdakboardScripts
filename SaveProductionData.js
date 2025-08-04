@@ -112,8 +112,9 @@ function saveProductionData(formData) {
       }
       break;
 
-    case 'SB':    
+    case 'SB': 
     case 'BSB':
+
     //BSB no toc!
       if(isBroadcast) {
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('BSB Broadcast');
@@ -129,13 +130,13 @@ function saveProductionData(formData) {
         sheet.getRange('C22').setValue(toCaps(formData.dc3));
 
         // Clear CAM rows 23–25 (labels in B, names in merged C:D)
-        sheet.getRange(23, 2, 3, 1).clearContent(); // Column B
-        sheet.getRange(23, 3, 3, 1).clearContent(); // Column C (merged with D)
+        sheet.getRange(23, 2, 7, 1).clearContent(); // Column B
+        sheet.getRange(23, 3, 7, 1).clearContent(); // Column C (merged with D)
 
         // Only write non-empty camera entries
         cams = formData.cameras || [];
         writeRow = 23;
-        for (let i = 0; i < cams.length && writeRow <= 25; i++) {
+        for (let i = 0; i < cams.length && writeRow <= 29; i++) {
           camName = cams[i];
           if (camName && camName.trim() !== '') {
             sheet.getRange(writeRow, 2).setValue(`CAM ${i + 1}`);
@@ -144,7 +145,7 @@ function saveProductionData(formData) {
           }
         }
       } else {
-        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('BSB');
+        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('BSB BigScreen');
         sheet.getRange('C13').setValue(toCaps(formData.producer));
         sheet.getRange('C16').setValue(toCaps(formData.td));
         sheet.getRange('C17').setValue(toCaps(formData.xpr));

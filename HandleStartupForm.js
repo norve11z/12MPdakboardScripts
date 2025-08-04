@@ -25,7 +25,7 @@ function handleStartupForm(dateStr, timeStr, team, sport, isBroadcast) {
           teamCord = "B3";
           dateCord = "B4";
       } else {
-        sheetName = "MBB Broadcast";
+        sheetName = "MBB BigScreen";
         offsets = [190, 185, 130, 105, 50, 30, 0];
         timeRange = "B5:B11";
         teamCord = "B3";
@@ -38,6 +38,20 @@ function handleStartupForm(dateStr, timeStr, team, sport, isBroadcast) {
     break;
 
     case 'BSB':
+      if(isBroadcast) {
+          sheetName = "BSB Broadcast";
+          offsets = [190, 185, 130, 105, 50, 30, 0];
+          timeRange = "B5:B11";
+          teamCord = "B3";
+          dateCord = "B4";
+      } else {
+        sheetName = "BSB BigScreen";
+        offsets = [190, 185, 130, 105, 50, 30, 0];
+        timeRange = "B5:B11";
+        teamCord = "B3";
+        dateCord = "B4";
+      }
+
     break;
 
     case 'SB':

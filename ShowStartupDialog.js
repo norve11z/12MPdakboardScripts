@@ -32,7 +32,7 @@ function showStartupDialog(sport) {
       camsCount = 7;
       for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(29 + i, 3).getValue()); }
       productionData = {
-        sport: 'FB',
+        sport: sport,
         isBroadcast: false,
         producer: sheet.getRange('C14').getValue(),
         director: sheet.getRange('C15').getValue(),
@@ -57,15 +57,14 @@ function showStartupDialog(sport) {
 
     case 'MBB':
     case 'WBB':
-
       if(isBroadcast) {
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('MBB Broadcast');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
         camsCount = 6;
         for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(24 + i, 3).getValue()); }
         productionData = {
-          sport: 'MBB',
-          isBroadcast: true,
+          sport: sport,
+          isBroadcast: isBroadcast,
           producer: sheet.getRange('C13').getValue(),
           director: sheet.getRange('C14').getValue(),
           ad: sheet.getRange('C15').getValue(),
@@ -79,18 +78,15 @@ function showStartupDialog(sport) {
           cam4grip: sheet.getRange('C23').getValue(),
           cameras: cams
         };
-        html = HtmlService.createTemplateFromFile('prompt');
-
       } else {
-
         Logger.log("Getting Current BigScreen MBB Values");
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('MBB BigScreen');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
         camsCount = 1;
         for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(23 + i, 3).getValue()); }
         productionData = {
-          sport: 'MBB',
-          isBroadcast: false,
+          sport: sport,
+          isBroadcast: isBroadcast,
           producer: sheet.getRange('C13').getValue(),
           director: sheet.getRange('C14').getValue(),
           td: sheet.getRange('C15').getValue(),
@@ -103,22 +99,21 @@ function showStartupDialog(sport) {
           dc2: sheet.getRange('C22').getValue(),
           cameras: cams
         };
-        html = HtmlService.createTemplateFromFile('prompt');
       }
-
+      html = HtmlService.createTemplateFromFile('prompt');
       html.productionData = productionData;
       break;
-
     case 'SB':    
     case 'BSB':
     //bsb no toc!
       if(isBroadcast) {
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('BSB Broadcast');
-        camsCount = 3;
+        SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
+        camsCount = 7;
         for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(23 + i, 3).getValue()); }
         productionData = {
-          sport: 'BSB',
-          isBroadcast: true,
+          sport: sport,
+          isBroadcast: isBroadcast,
           producer: sheet.getRange('C13').getValue(),
           director: sheet.getRange('C14').getValue(),
           ad: sheet.getRange('C15').getValue(),
@@ -131,16 +126,14 @@ function showStartupDialog(sport) {
           dc3: sheet.getRange('C22').getValue(),
           cameras: cams
         };
-        html = HtmlService.createTemplateFromFile('prompt');
-
       } else {
-
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('BSB BigScreen');
+        SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
         camsCount = 3;
         for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(23 + i, 3).getValue()); }
         productionData = {
-          sport: 'BSB',
-          isBroadcast: false,
+          sport: sport,
+          isBroadcast: isBroadcast,
           producer: sheet.getRange('C13').getValue(),
           td: sheet.getRange('C14').getValue(),
           xpr: sheet.getRange('C15').getValue(),
@@ -148,9 +141,8 @@ function showStartupDialog(sport) {
           wx1: sheet.getRange('C17').getValue(),
           wx2: sheet.getRange('C18').getValue(),
         };
-        html = HtmlService.createTemplateFromFile('prompt');
       }
-
+      html = HtmlService.createTemplateFromFile('prompt');
       html.productionData = productionData;
       break;
 
@@ -159,11 +151,12 @@ function showStartupDialog(sport) {
     //SOC has no grips!
       if(isBroadcast) {
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('MBB');
+        SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
         camsCount = 3;
         for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(23 + i, 3).getValue()); }
         productionData = {
-          sport: 'VB',
-          isBroadcast: true,
+          sport: sport,
+          isBroadcast: isBroadcast,
           producer: sheet.getRange('C13').getValue(),
           director: sheet.getRange('C14').getValue(),
           ad: sheet.getRange('C15').getValue(),
@@ -177,16 +170,16 @@ function showStartupDialog(sport) {
           cam6grip: sheet.getRange('C19').getValue(),
           cameras: cams
         };
-        html = HtmlService.createTemplateFromFile('fb_prompt');
 
       } else {
       //SOC has no wx1, wx2!
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('MBB');
+        SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
         camsCount = 3;
         for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(23 + i, 3).getValue()); }
         productionData = {
-          sport: 'VB',
-          isBroadcast: false,
+          sport: sport,
+          isBroadcast: isBroadcast,
           producer: sheet.getRange('C13').getValue(),
           td: sheet.getRange('C16').getValue(),
           xpr: sheet.getRange('C17').getValue(),
@@ -194,9 +187,8 @@ function showStartupDialog(sport) {
           wx1: sheet.getRange('C20').getValue(),
           wx2: sheet.getRange('C21').getValue(),
         };
-        html = HtmlService.createTemplateFromFile('fb_prompt');
       }
-
+      html = HtmlService.createTemplateFromFile('prompt');
       html.productionData = productionData;
       break;
 

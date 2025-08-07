@@ -2,12 +2,12 @@ function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('📝 Edit Schedule')
     .addItem('🏈 Football', 'showFBstartupDialog')   // Done
-    .addItem('🏀 Men\'s Basketball', 'showMBBstartupDialog') // BigScreen Done, Broadcast
-    .addItem('🏀 Women\'s Basketball', 'showWBBstartupDialog')
-    .addItem('⚾ Baseball', 'showBSBstartupDialog')
-    .addItem('⚾ Softball', 'showSBstartupDialog')
-    .addItem('⚾ Soccer', 'showSOCstartupDialog')
-    .addItem('⚾ Volleyball', 'showVBstartupDialog')
+    .addItem('🏀 Men\'s Basketball', 'showMBBstartupDialog') // BigScreen Done, Broadcast Done
+    .addItem('🏀 Women\'s Basketball', 'showWBBstartupDialog') // WHo Cares
+    .addItem('⚾ Baseball', 'showBSBstartupDialog')  // Done
+    .addItem('⚾ Softball', 'showSBstartupDialog') // Done
+    .addItem('⚾ Soccer', 'showSOCstartupDialog')  // Done
+    .addItem('⚾ Volleyball', 'showVBstartupDialog') // Done
     .addToUi();
 }
 

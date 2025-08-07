@@ -103,9 +103,53 @@ function showStartupDialog(sport) {
       html = HtmlService.createTemplateFromFile('prompt');
       html.productionData = productionData;
       break;
+
+
+
     case 'SB':    
+      if(isBroadcast) {
+        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('SFB Broadcast');
+        SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
+        camsCount = 7;
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(24 + i, 3).getValue()); }
+        productionData = {
+          sport: sport,
+          isBroadcast: isBroadcast,
+          producer: sheet.getRange('C13').getValue(),
+          director: sheet.getRange('C14').getValue(),
+          ad: sheet.getRange('C15').getValue(),
+          ap: sheet.getRange('C16').getValue(),
+          td: sheet.getRange('C17').getValue(),
+          bug: sheet.getRange('C18').getValue(),
+          xpr: sheet.getRange('C19').getValue(),
+          toc: sheet.getRange('C20').getValue(),
+          dc1: sheet.getRange('C21').getValue(),
+          dc2: sheet.getRange('C22').getValue(),
+          dc3: sheet.getRange('C23').getValue(),
+          cameras: cams
+        };
+      } else {
+        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('SFB BigScreen');
+        SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
+        camsCount = 1;
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(19 + i, 3).getValue()); }
+        productionData = {
+          sport: sport,
+          isBroadcast: isBroadcast,
+          producer: sheet.getRange('C13').getValue(),
+          td: sheet.getRange('C14').getValue(),
+          xpr: sheet.getRange('C15').getValue(),
+          dc1: sheet.getRange('C16').getValue(),
+          wx1: sheet.getRange('C17').getValue(),
+          wx2: sheet.getRange('C18').getValue(),
+        };
+      }
+      html = HtmlService.createTemplateFromFile('prompt');
+      html.productionData = productionData;
+      break;
+
+
     case 'BSB':
-    //bsb no toc!
       if(isBroadcast) {
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('BSB Broadcast');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
@@ -129,8 +173,8 @@ function showStartupDialog(sport) {
       } else {
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('BSB BigScreen');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
-        camsCount = 3;
-        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(23 + i, 3).getValue()); }
+        camsCount = 1;
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(19 + i, 3).getValue()); }
         productionData = {
           sport: sport,
           isBroadcast: isBroadcast,
@@ -147,36 +191,75 @@ function showStartupDialog(sport) {
       break;
 
     case 'VB':
-    case 'SOC':
-    //SOC has no grips!
       if(isBroadcast) {
-        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('MBB');
+        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('VB Broadcast');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
-        camsCount = 3;
-        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(23 + i, 3).getValue()); }
+        camsCount = 7;
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(24 + i, 3).getValue()); }
         productionData = {
           sport: sport,
           isBroadcast: isBroadcast,
           producer: sheet.getRange('C13').getValue(),
           director: sheet.getRange('C14').getValue(),
           ad: sheet.getRange('C15').getValue(),
-          ap: sheet.getRange('C15').getValue(),
-          toc: sheet.getRange('C16').getValue(),
-          bug: sheet.getRange('C15').getValue(),
-          xpr: sheet.getRange('C17').getValue(),
-          dc1: sheet.getRange('C18').getValue(),
-          dc2: sheet.getRange('C19').getValue(),
-          cam5grip: sheet.getRange('C19').getValue(),
-          cam6grip: sheet.getRange('C19').getValue(),
+          ap: sheet.getRange('C16').getValue(),
+          toc: sheet.getRange('C17').getValue(),
+          bug: sheet.getRange('C18').getValue(),
+          xpr: sheet.getRange('C19').getValue(),
+          dc1: sheet.getRange('C20').getValue(),
+          dc2: sheet.getRange('C21').getValue(),
+          cam5grip: sheet.getRange('C22').getValue(),
+          cam6grip: sheet.getRange('C23').getValue(),
           cameras: cams
         };
 
       } else {
-      //SOC has no wx1, wx2!
-        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('MBB');
+        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('VB BigScreen');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
-        camsCount = 3;
-        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(23 + i, 3).getValue()); }
+        camsCount = 1;
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(19 + i, 3).getValue()); }
+        productionData = {
+          sport: sport,
+          isBroadcast: isBroadcast,
+          producer: sheet.getRange('C13').getValue(),
+          td: sheet.getRange('C14').getValue(),
+          xpr: sheet.getRange('C15').getValue(),
+          dc1: sheet.getRange('C16').getValue(),
+          wx1: sheet.getRange('C17').getValue(),
+          wx2: sheet.getRange('C18').getValue(),
+        };
+      }
+      html = HtmlService.createTemplateFromFile('prompt');
+      html.productionData = productionData;
+      break;
+
+
+    case 'SOC':
+      if(isBroadcast) {
+        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('SOC Broadcast');
+        SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
+        camsCount = 7;
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(22 + i, 3).getValue()); }
+        productionData = {
+          sport: sport,
+          isBroadcast: isBroadcast,
+          producer: sheet.getRange('C13').getValue(),
+          director: sheet.getRange('C14').getValue(),
+          ad: sheet.getRange('C15').getValue(),
+          ap: sheet.getRange('C16').getValue(),
+          toc: sheet.getRange('C17').getValue(),
+          bug: sheet.getRange('C18').getValue(),
+          xpr: sheet.getRange('C19').getValue(),
+          dc1: sheet.getRange('C20').getValue(),
+          dc2: sheet.getRange('C21').getValue(),
+          cameras: cams
+        };
+
+      } else {
+        sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('SOC BigScreen');
+        SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
+        camsCount = 1;
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(19 + i, 3).getValue()); }
         productionData = {
           sport: sport,
           isBroadcast: isBroadcast,
@@ -184,8 +267,6 @@ function showStartupDialog(sport) {
           td: sheet.getRange('C16').getValue(),
           xpr: sheet.getRange('C17').getValue(),
           dc1: sheet.getRange('C18').getValue(),
-          wx1: sheet.getRange('C20').getValue(),
-          wx2: sheet.getRange('C21').getValue(),
         };
       }
       html = HtmlService.createTemplateFromFile('prompt');

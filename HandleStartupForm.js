@@ -19,48 +19,76 @@ function handleStartupForm(dateStr, timeStr, team, sport, isBroadcast) {
     case 'MBB':
 
       if(isBroadcast) {
-          sheetName = "MBB Broadcast";
-          offsets = [190, 185, 130, 105, 50, 30, 0];
-          timeRange = "B5:B11";
-          teamCord = "B3";
-          dateCord = "B4";
+        sheetName = "MBB Broadcast";
       } else {
         sheetName = "MBB BigScreen";
-        offsets = [190, 185, 130, 105, 50, 30, 0];
-        timeRange = "B5:B11";
-        teamCord = "B3";
-        dateCord = "B4";
       }
-
+      offsets = [190, 185, 130, 105, 50, 30, 0];
+      timeRange = "B5:B11";
+      teamCord = "B3";
+      dateCord = "B4";
     break;
 
     case 'WBB':
+      if(isBroadcast) {
+        sheetName = "MBB Broadcast";
+      } else {
+        sheetName = "MBB BigScreen";
+      }
+      offsets = [190, 185, 130, 105, 50, 30, 0];
+      timeRange = "B5:B11";
+      teamCord = "B3";
+      dateCord = "B4";
     break;
 
     case 'BSB':
       if(isBroadcast) {
-          sheetName = "BSB Broadcast";
-          offsets = [190, 185, 130, 105, 50, 30, 0];
-          timeRange = "B5:B11";
-          teamCord = "B3";
-          dateCord = "B4";
+        sheetName = "BSB Broadcast";
       } else {
         sheetName = "BSB BigScreen";
-        offsets = [190, 185, 130, 105, 50, 30, 0];
-        timeRange = "B5:B11";
-        teamCord = "B3";
-        dateCord = "B4";
       }
+      offsets = [190, 185, 130, 105, 50, 30, 0];
+      timeRange = "B5:B11";
+      teamCord = "B3";
+      dateCord = "B4";
 
     break;
 
     case 'SB':
+      if(isBroadcast) {
+        sheetName = "SFB Broadcast";
+
+      } else {
+        sheetName = "SFB BigScreen";
+      }
+      offsets = [190, 185, 130, 105, 50, 30, 0];
+      timeRange = "B5:B11";
+      teamCord = "B3";
+      dateCord = "B4";
     break;
 
     case 'SOC':
+      if(isBroadcast) {
+        sheetName = "SOC Broadcast";
+      } else {
+        sheetName = "SOC BigScreen";
+      }
+      offsets = [190, 185, 130, 105, 50, 30, 0];
+      timeRange = "B5:B11";
+      teamCord = "B3";
+      dateCord = "B4";
     break;
 
     case 'VB':
+      if(isBroadcast) {
+        sheetName = "VB Broadcast";
+      } else {
+        sheetName = "VB BigScreen";
+      }
+      offsets = [190, 185, 130, 105, 50, 30, 0];
+      timeRange = "B5:B11";
+      teamCord = "B3";
+      dateCord = "B4";
     break;
   }
 

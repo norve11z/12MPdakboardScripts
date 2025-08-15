@@ -1,6 +1,6 @@
+var isBroadcast = false;
 function showStartupDialog(sport) {
   Logger.log("Showing Startup Dialog");
-
   if(sport != 'FB') {
     const ui = SpreadsheetApp.getUi();
     const response = ui.alert(
@@ -8,7 +8,6 @@ function showStartupDialog(sport) {
       ui.ButtonSet.YES_NO
     );
     // Broadcast = true, Big Screen = false
-    var isBroadcast;
     if (response === ui.Button.YES) {
       isBroadcast = true;
     } else if (response === ui.Button.NO) {
@@ -18,9 +17,39 @@ function showStartupDialog(sport) {
     }
   }
 
+  productionData = {
+    sport: sport || "",
+    isBroadcast: isBroadcast || false,
+    producer: "",
+    director: "",
+    td: "",
+    dakman: "",
+    ad: "",
+    ap: "",
+    xpr: "",
+    oots: "",
+    toc: "",
+    bug: "",
+    showControl: "",
+    slash: "",
+    cam3grip: "",
+    cam4grip: "",
+    cam5grip: "",
+    cam6grip: "",
+    dc1: "",
+    dc2: "",
+    dc3: "",
+    dc4: "",
+    wx1: "",
+    wx2: "",
+    wx3: "",
+    cameras: []
+  };
+
   var html;
   var sheet;
   var camsCount;
+  var startRow;
   var cams = [];
 
   switch (sport) {
@@ -64,7 +93,7 @@ function showStartupDialog(sport) {
         for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(24 + i, 3).getValue()); }
         productionData = {
           sport: sport,
-          isBroadcast: isBroadcast,
+          isBroadcast: true,
           producer: sheet.getRange('C13').getValue(),
           director: sheet.getRange('C14').getValue(),
           ad: sheet.getRange('C15').getValue(),
@@ -86,7 +115,7 @@ function showStartupDialog(sport) {
         for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(23 + i, 3).getValue()); }
         productionData = {
           sport: sport,
-          isBroadcast: isBroadcast,
+          isBroadcast: false,
           producer: sheet.getRange('C13').getValue(),
           director: sheet.getRange('C14').getValue(),
           td: sheet.getRange('C15').getValue(),
@@ -106,7 +135,7 @@ function showStartupDialog(sport) {
 
 
 
-    case 'SB':    
+    case 'SFB':    
       if(isBroadcast) {
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('SFB Broadcast');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
@@ -235,42 +264,41 @@ function showStartupDialog(sport) {
 
 
     case 'SOC':
+      Logger.log("Getting SOC Data");
+
       if(isBroadcast) {
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('SOC Broadcast');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
         camsCount = 7;
-        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(22 + i, 3).getValue()); }
-        productionData = {
-          sport: sport,
-          isBroadcast: isBroadcast,
-          producer: sheet.getRange('C13').getValue(),
-          director: sheet.getRange('C14').getValue(),
-          ad: sheet.getRange('C15').getValue(),
-          ap: sheet.getRange('C16').getValue(),
-          toc: sheet.getRange('C17').getValue(),
-          bug: sheet.getRange('C18').getValue(),
-          xpr: sheet.getRange('C19').getValue(),
-          dc1: sheet.getRange('C20').getValue(),
-          dc2: sheet.getRange('C21').getValue(),
-          cameras: cams
-        };
+        startRow = findRow("PRODUCER");
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange((startRow + 9) + i, 3).getValue()); }
+        productionData.producer = sheet.getRange('C' + (startRow)).getValue();
+        productionData.director = sheet.getRange('C' + (startRow + 1)).getValue();
+        productionData.ad = sheet.getRange('C' + (startRow + 2)).getValue();
+        productionData.ap = sheet.getRange('C' + (startRow + 3)).getValue();
+        productionData.toc = sheet.getRange('C' + (startRow + 4)).getValue();
+        productionData.bug = sheet.getRange('C' + (startRow + 5)).getValue();
+        productionData.xpr = sheet.getRange('C' + (startRow + 6)).getValue();
+        productionData.dc1 = sheet.getRange('C' + (startRow + 7)).getValue();
+        productionData.dc2 = sheet.getRange('C' + (startRow + 8)).getValue();
+        productionData.cameras = cams;
 
       } else {
+        Logger.log("Getting SOC BigScreen Data");
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('SOC BigScreen');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
-        camsCount = 1;
-        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(19 + i, 3).getValue()); }
-        productionData = {
-          sport: sport,
-          isBroadcast: isBroadcast,
-          producer: sheet.getRange('C13').getValue(),
-          td: sheet.getRange('C16').getValue(),
-          xpr: sheet.getRange('C17').getValue(),
-          dc1: sheet.getRange('C18').getValue(),
-        };
+        startRow = findRow("PRODUCER");
+        Logger.log('C' + startRow);
+        productionData.producer = sheet.getRange('C' + (startRow + 0)).getValue();
+        productionData.td = sheet.getRange('C' + (startRow + 1)).getValue();
+        productionData.xpr = sheet.getRange('C' + (startRow + 2)).getValue();
+        productionData.dc1 = sheet.getRange('C' + (startRow + 3)).getValue();
+
       }
       html = HtmlService.createTemplateFromFile('prompt');
       html.productionData = productionData;
+      Logger.log("Making SOC Prompt");
+
       break;
 
     default:

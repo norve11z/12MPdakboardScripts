@@ -54,7 +54,7 @@ function handleStartupForm(dateStr, timeStr, team, sport, isBroadcast) {
 
     break;
 
-    case 'SB':
+    case 'SFB':
       if(isBroadcast) {
         sheetName = "SFB Broadcast";
 
@@ -70,11 +70,13 @@ function handleStartupForm(dateStr, timeStr, team, sport, isBroadcast) {
     case 'SOC':
       if(isBroadcast) {
         sheetName = "SOC Broadcast";
+        offsets = [240, 210, 150, 120, 90, 70, 30, 15, 0];
+        timeRange = "B5:B13";
       } else {
         sheetName = "SOC BigScreen";
+        offsets = [190, 185, 130, 105, 50, 30, 0];
+        timeRange = "B5:B11";
       }
-      offsets = [190, 185, 130, 105, 50, 30, 0];
-      timeRange = "B5:B11";
       teamCord = "B3";
       dateCord = "B4";
     break;

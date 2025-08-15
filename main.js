@@ -2,12 +2,12 @@ function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('📝 Edit Schedule')
     .addItem('🏈 Football', 'showFBstartupDialog')   // Done
-    .addItem('🏀 Men\'s Basketball', 'showMBBstartupDialog') // BigScreen Done, Broadcast Done
-    .addItem('🏀 Women\'s Basketball', 'showWBBstartupDialog') // WHo Cares
-    .addItem('⚾ Baseball', 'showBSBstartupDialog')  // Done
-    .addItem('⚾ Softball', 'showSBstartupDialog') // Done
-    .addItem('⚾ Soccer', 'showSOCstartupDialog')  // Done
-    .addItem('⚾ Volleyball', 'showVBstartupDialog') // Done
+    .addItem('🏀 Men\'s Basketball', 'showMBBstartupDialog') // BigScreen Done, Broadcast
+    .addItem('🏀 Women\'s Basketball', 'showWBBstartupDialog')
+    .addItem('⚾ Baseball', 'showBSBstartupDialog')
+    .addItem('⚾ Softball', 'showSBstartupDialog')
+    .addItem('⚾ Soccer', 'showSOCstartupDialog')
+    .addItem('⚾ Volleyball', 'showVBstartupDialog')
     .addToUi();
 }
 
@@ -26,16 +26,27 @@ function parseTime(timeStr) {
   return isNaN(parsed) ? null : parsed;
 }
 
+function findRow(roleName) {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const columnB = sheet.getRange("B:B").getValues();
+
+  for (let i = 0; i < columnB.length; i++) {
+    if (String(columnB[i][0]).trim().toUpperCase() === roleName.toUpperCase()) {
+      return i + 1; // 1-based row number
+    }
+  }
+  return null;
+}
+
 // Wrappers for each sport
 function showFBstartupDialog() { showStartupDialog('FB'); }
 function showMBBstartupDialog() { showStartupDialog('MBB'); }
 function showWBBstartupDialog() { showStartupDialog('WBB'); }
 function showBSBstartupDialog() { showStartupDialog('BSB'); }
-function showSBstartupDialog()  { showStartupDialog('SB'); }
+function showSBstartupDialog()  { showStartupDialog('SFB'); }
 function showSOCstartupDialog() { showStartupDialog('SOC'); }
 function showVBstartupDialog()  { showStartupDialog('VB'); }
 
-// testing changes
 
 
 

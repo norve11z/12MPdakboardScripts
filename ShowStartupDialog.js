@@ -59,25 +59,26 @@ function showStartupDialog(sport) {
       sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('FB VideoBoard');
       SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
       camsCount = 7;
-      for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(29 + i, 3).getValue()); }
+      startRow = findRow("PRODUCER");
+      for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange((startRow+15) + i, 3).getValue()); }
       productionData = {
         sport: sport,
         isBroadcast: false,
-        producer: sheet.getRange('C14').getValue(),
-        director: sheet.getRange('C15').getValue(),
-        td: sheet.getRange('C16').getValue(),
-        dakman: sheet.getRange('C17').getValue(),
-        ap: sheet.getRange('C18').getValue(),
-        xpr: sheet.getRange('C19').getValue(),
-        oots: sheet.getRange('C20').getValue(),
-        toc: sheet.getRange('C21').getValue(),
-        dc1: sheet.getRange('C22').getValue(),
-        dc2: sheet.getRange('C23').getValue(),
-        dc3: sheet.getRange('C24').getValue(),
-        dc4: sheet.getRange('C25').getValue(),
-        wx1: sheet.getRange('C26').getValue(),
-        wx2: sheet.getRange('C27').getValue(),
-        wx3: sheet.getRange('C28').getValue(),
+        producer: sheet.getRange('C' + startRow).getValue(),
+        director: sheet.getRange('C' + (startRow + 1)).getValue(),
+        td: sheet.getRange('C' + (startRow + 2)).getValue(),
+        dakman: sheet.getRange('C' + (startRow + 3)).getValue(),
+        ap: sheet.getRange('C' + (startRow + 4)).getValue(),
+        xpr: sheet.getRange('C' + (startRow + 5)).getValue(),
+        oots: sheet.getRange('C' + (startRow + 6)).getValue(),
+        toc: sheet.getRange('C' + (startRow + 7)).getValue(),
+        dc1: sheet.getRange('C' + (startRow + 8)).getValue(),
+        dc2: sheet.getRange('C' + (startRow + 9)).getValue(),
+        dc3: sheet.getRange('C' + (startRow + 10)).getValue(),
+        dc4: sheet.getRange('C' + (startRow + 11)).getValue(),
+        wx1: sheet.getRange('C' + (startRow + 12)).getValue(),
+        wx2: sheet.getRange('C' + (startRow + 13)).getValue(),
+        wx3: sheet.getRange('C' + (startRow + 14)).getValue(),
         cameras: cams
       };
       html = HtmlService.createTemplateFromFile('prompt');
@@ -224,21 +225,22 @@ function showStartupDialog(sport) {
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('VB Broadcast');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
         camsCount = 7;
-        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(24 + i, 3).getValue()); }
+        startRow = findRow("PRODUCER");
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(startRow+11 + i, 3).getValue()); }
         productionData = {
           sport: sport,
           isBroadcast: isBroadcast,
-          producer: sheet.getRange('C13').getValue(),
-          director: sheet.getRange('C14').getValue(),
-          ad: sheet.getRange('C15').getValue(),
-          ap: sheet.getRange('C16').getValue(),
-          toc: sheet.getRange('C17').getValue(),
-          bug: sheet.getRange('C18').getValue(),
-          xpr: sheet.getRange('C19').getValue(),
-          dc1: sheet.getRange('C20').getValue(),
-          dc2: sheet.getRange('C21').getValue(),
-          cam5grip: sheet.getRange('C22').getValue(),
-          cam6grip: sheet.getRange('C23').getValue(),
+          producer: sheet.getRange('C' + (startRow + 0)).getValue(),
+          director: sheet.getRange('C' + (startRow + 1)).getValue(),
+          ad: sheet.getRange('C' + (startRow + 2)).getValue(),
+          ap: sheet.getRange('C' + (startRow + 3)).getValue(),
+          toc: sheet.getRange('C' + (startRow + 4)).getValue(),
+          bug: sheet.getRange('C' + (startRow + 5)).getValue(),
+          xpr: sheet.getRange('C' + (startRow + 6)).getValue(),
+          dc1: sheet.getRange('C' + (startRow + 7)).getValue(),
+          dc2: sheet.getRange('C' + (startRow + 8)).getValue(),
+          cam5grip: sheet.getRange('C' + (startRow + 9)).getValue(),
+          cam6grip: sheet.getRange('C' + (startRow + 10)).getValue(),
           cameras: cams
         };
 

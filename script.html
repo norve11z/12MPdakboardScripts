@@ -151,7 +151,7 @@
         case 'SOC':
           if (isBroadcast) {
 
-            // SOC/VB BROADCAST (grips only for VB)
+            // SOC BROADCAST (grips only for VB)
             formData = {
               sport: sport,
               isBroadcast: isBroadcast,
@@ -193,28 +193,28 @@
             sport: sport,
             isBroadcast: isBroadcast,
             producer: document.getElementById('producer').value,
-            director: document.getElementById('director').value,
-            ad: document.getElementById('ad').value,
-            ap: document.getElementById('ap').value,
-            xpr: document.getElementById('xpr').value,
-            bug: document.getElementById('bug').value,
-            toc: document.getElementById('toc').value,
-            dc1: document.getElementById('dc1').value,
-            dc2: document.getElementById('dc2').value,
+            director: document.getElementById('vbA_director').value,
+            ad: document.getElementById('vbA_ad').value,
+            ap: document.getElementById('vbA_ap').value,
+            xpr: document.getElementById('vbA_xpr').value,
+            bug: document.getElementById('vbA_bug').value,
+            toc: document.getElementById('vbA_toc').value,
+            dc1: document.getElementById('vbA_dc1').value,
+            dc2: document.getElementById('vbA_dc2').value,
+            cam5grip: document.getElementById('vbA_cam5grip').value,
+            cam6grip: document.getElementById('vbA_cam6grip').value,
             cameras: [
-              document.getElementsByName('cam1')[0].value,
-              document.getElementsByName('cam2')[0].value,
-              document.getElementsByName('cam3')[0].value,
-              document.getElementsByName('cam4')[0].value,
-              document.getElementsByName('cam5')[0].value,
-              document.getElementsByName('cam6')[0].value,
-              document.getElementsByName('cam7')[0].value
+              document.getElementsByName('VBcam1')[0].value,
+              document.getElementsByName('VBcam2')[0].value,
+              document.getElementsByName('VBcam3')[0].value,
+              document.getElementsByName('VBcam4')[0].value,
+              document.getElementsByName('VBcam5')[0].value,
+              document.getElementsByName('VBcam6')[0].value,
+              document.getElementsByName('VBcam7')[0].value
               ]
             };
-            if (sport === 'VB') {
-              formData.cam5grip = document.getElementById('cam5grip').value;
-              formData.cam6grip = document.getElementById('cam6grip').value;
-            }
+            google.script.run.test();
+
           } else {
             formData = {
               sport: sport,
@@ -228,10 +228,6 @@
                 document.getElementsByName('cam1')[0].value,
               ]
             };
-            if (sport === 'VB') {
-              formData.cam5grip = document.getElementById('cam5grip').value;
-              formData.cam6grip = document.getElementById('cam6grip').value;
-            }
           }
           break;
         }

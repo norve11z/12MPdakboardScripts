@@ -1,13 +1,13 @@
 function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('📝 Edit Schedule')
-    .addItem('🏈 Football', 'showFBstartupDialog')   // Done
+    .addItem('🏈🏟️🏆 Football', 'showFBstartupDialog')   // Done
     .addItem('🏀 Men\'s Basketball', 'showMBBstartupDialog') // BigScreen Done, Broadcast
     .addItem('🏀 Women\'s Basketball', 'showWBBstartupDialog')
     .addItem('⚾ Baseball', 'showBSBstartupDialog')
     .addItem('⚾ Softball', 'showSBstartupDialog')
     .addItem('👟⚽🥅 Soccer', 'showSOCstartupDialog')
-    .addItem('⚾ Volleyball', 'showVBstartupDialog')
+    .addItem('🏐🙌🏐 Volleyball', 'showVBstartupDialog')
     .addToUi();
 }
 
@@ -50,6 +50,8 @@ function hideEmptyRows(col, startRow, endRow) {
     }
   }
 }
+
+function test() {}
 
 
 // Wrappers for each sport

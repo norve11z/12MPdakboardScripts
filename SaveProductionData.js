@@ -229,27 +229,31 @@ function saveProductionData(formData) {
 
     case 'VB':
       if(isBroadcast) {
+        Logger.log("Saving  VB BC Data");      
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('VB Broadcast');
-        sheet.getRange('C13').setValue(toCaps(formData.producer));
-        sheet.getRange('C14').setValue(toCaps(formData.director));
-        sheet.getRange('C15').setValue(toCaps(formData.ad));
-        sheet.getRange('C16').setValue(toCaps(formData.ap));
-        sheet.getRange('C17').setValue(toCaps(formData.toc));
-        sheet.getRange('C18').setValue(toCaps(formData.bug));
-        sheet.getRange('C19').setValue(toCaps(formData.xpr));
-        sheet.getRange('C20').setValue(toCaps(formData.dc1));
-        sheet.getRange('C21').setValue(toCaps(formData.dc2));
-        sheet.getRange('C22').setValue(toCaps(formData.cam5grip));
-        sheet.getRange('C23').setValue(toCaps(formData.cam6grip));
+        prodRow = findRow("PRODUCER");
+        sheet.showRows(prodRow, prodRow + 10);
+        sheet.getRange('C' + (prodRow + 0)).setValue(toCaps(formData.producer));
+        sheet.getRange('C' + (prodRow + 1)).setValue(toCaps(formData.director));
+        sheet.getRange('C' + (prodRow + 2)).setValue(toCaps(formData.ad));
+        sheet.getRange('C' + (prodRow + 3)).setValue(toCaps(formData.ap));
+        sheet.getRange('C' + (prodRow + 4)).setValue(toCaps(formData.toc));
+        sheet.getRange('C' + (prodRow + 5)).setValue(toCaps(formData.bug));
+        sheet.getRange('C' + (prodRow + 6)).setValue(toCaps(formData.xpr));
+        sheet.getRange('C' + (prodRow + 7)).setValue(toCaps(formData.dc1));
+        sheet.getRange('C' + (prodRow + 8)).setValue(toCaps(formData.dc2));
+        sheet.getRange('C' + (prodRow + 9)).setValue(toCaps(formData.cam5grip));
+        sheet.getRange('C' + (prodRow + 10)).setValue(toCaps(formData.cam6grip));
+        hideEmptyRows(3, prodRow, prodRow + 10);
 
         // Clear CAM rows 23/25 (labels in B, names in merged C:D)
-        sheet.getRange(24, 2, 7, 1).clearContent(); // Column B
-        sheet.getRange(24, 3, 7, 1).clearContent(); // Column C (merged with D)
+        sheet.getRange(prodRow+11, 2, 7, 1).clearContent(); // Column B
+        sheet.getRange(prodRow+11, 3, 7, 1).clearContent(); // Column C (merged with D)
 
         // Only write non-empty camera entries
         cams = formData.cameras || [];
-        writeRow = 24;
-        for (let i = 0; i < cams.length && writeRow <= 30; i++) {
+        writeRow = prodRow+11;
+        for (let i = 0; i < cams.length && writeRow <=writeRow+6; i++) {
           camName = cams[i];
           if (camName && camName.trim() !== '') {
             sheet.getRange(writeRow, 2).setValue(`CAM ${i + 1}`);

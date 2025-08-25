@@ -84,11 +84,13 @@ function handleStartupForm(dateStr, timeStr, team, sport, isBroadcast) {
     case 'VB':
       if(isBroadcast) {
         sheetName = "VB Broadcast";
+        timeRange = "B5:B11";
+        offsets = [190, 185, 130, 105, 50, 30, 0];
       } else {
         sheetName = "VB BigScreen";
+        timeRange = "B5:B11";
+        offsets = [190, 185, 130, 105, 50, 30, 0];
       }
-      offsets = [190, 185, 130, 105, 50, 30, 0];
-      timeRange = "B5:B11";
       teamCord = "B3";
       dateCord = "B4";
     break;

@@ -6,7 +6,7 @@ function onOpen() {
     .addItem('🏀 Women\'s Basketball', 'showWBBstartupDialog')
     .addItem('⚾ Baseball', 'showBSBstartupDialog')
     .addItem('⚾ Softball', 'showSBstartupDialog')
-    .addItem('⚾ Soccer', 'showSOCstartupDialog')
+    .addItem('👟⚽🥅 Soccer', 'showSOCstartupDialog')
     .addItem('⚾ Volleyball', 'showVBstartupDialog')
     .addToUi();
 }
@@ -37,6 +37,20 @@ function findRow(roleName) {
   }
   return null;
 }
+
+function hideEmptyRows(col, startRow, endRow) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var numRows = endRow - startRow + 1;
+  var range = sheet.getRange(startRow, col, numRows, 1);
+  var values = range.getValues();
+  
+  for (var i = 0; i < values.length; i++) {
+    if (values[i][0] === "" || values[i][0] === null) {
+      sheet.hideRows(startRow + i);
+    }
+  }
+}
+
 
 // Wrappers for each sport
 function showFBstartupDialog() { showStartupDialog('FB'); }

@@ -271,16 +271,17 @@ function showStartupDialog(sport) {
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
         camsCount = 7;
         startRow = findRow("PRODUCER");
-        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange((startRow + 9) + i, 3).getValue()); }
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange((startRow + 10) + i, 3).getValue()); }
         productionData.producer = sheet.getRange('C' + (startRow)).getValue();
         productionData.director = sheet.getRange('C' + (startRow + 1)).getValue();
-        productionData.ad = sheet.getRange('C' + (startRow + 2)).getValue();
-        productionData.ap = sheet.getRange('C' + (startRow + 3)).getValue();
-        productionData.toc = sheet.getRange('C' + (startRow + 4)).getValue();
-        productionData.bug = sheet.getRange('C' + (startRow + 5)).getValue();
-        productionData.xpr = sheet.getRange('C' + (startRow + 6)).getValue();
-        productionData.dc1 = sheet.getRange('C' + (startRow + 7)).getValue();
-        productionData.dc2 = sheet.getRange('C' + (startRow + 8)).getValue();
+        productionData.td = sheet.getRange('C' + (startRow + 2)).getValue();
+        productionData.ad = sheet.getRange('C' + (startRow + 3)).getValue();
+        productionData.ap = sheet.getRange('C' + (startRow + 4)).getValue();
+        productionData.xpr = sheet.getRange('C' + (startRow + 5)).getValue();
+        productionData.bug = sheet.getRange('C' + (startRow + 6)).getValue();
+        productionData.toc = sheet.getRange('C' + (startRow + 7)).getValue();
+        productionData.dc1 = sheet.getRange('C' + (startRow + 8)).getValue();
+        productionData.dc2 = sheet.getRange('C' + (startRow + 9)).getValue();
         productionData.cameras = cams;
 
       } else {

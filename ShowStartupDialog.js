@@ -236,7 +236,7 @@ function showStartupDialog(sport) {
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
         camsCount = 7;
         startRow = findRow("PRODUCER");
-        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(startRow+11 + i, 3).getValue()); }
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(startRow+12 + i, 3).getValue()); }
         productionData = {
           sport: sport,
           isBroadcast: isBroadcast,
@@ -249,8 +249,9 @@ function showStartupDialog(sport) {
           xpr: sheet.getRange('C' + (startRow + 6)).getValue(),
           dc1: sheet.getRange('C' + (startRow + 7)).getValue(),
           dc2: sheet.getRange('C' + (startRow + 8)).getValue(),
-          cam5grip: sheet.getRange('C' + (startRow + 9)).getValue(),
-          cam6grip: sheet.getRange('C' + (startRow + 10)).getValue(),
+          dc3: sheet.getRange('C' + (startRow + 9)).getValue(),
+          cam5grip: sheet.getRange('C' + (startRow + 10)).getValue(),
+          cam6grip: sheet.getRange('C' + (startRow + 11)).getValue(),
           cameras: cams
         };
 

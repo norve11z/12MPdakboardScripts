@@ -1,3 +1,11 @@
+    ////////////////////////////////////////////////////////////////////////////
+   // This was created by Zachary Norvell, a Class of 2026 Computer Engineer // 
+  // Intended for 12th Man Production DakBoards outside of Control Rooms    //
+ // Was Made in the Summer of 2025 with the Assistance of Summer Whitlock  //
+////////////////////////////////////////////////////////////////////////////
+
+
+
 var isBroadcast = false;
 function showStartupDialog(sport) {
   Logger.log("Showing Startup Dialog");
@@ -21,6 +29,7 @@ function showStartupDialog(sport) {
     sport: sport || "",
     isBroadcast: isBroadcast || false,
     producer: "",
+    producer2: "",
     director: "",
     td: "",
     dakman: "",
@@ -59,26 +68,27 @@ function showStartupDialog(sport) {
       sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('FB VideoBoard');
       SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
       camsCount = 7;
-      startRow = findRow("PRODUCER");
-      for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange((startRow+15) + i, 3).getValue()); }
+      startRow = findRow("GAME PROD");
+      for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange((startRow+16) + i, 3).getValue()); }
       productionData = {
         sport: sport,
         isBroadcast: false,
         producer: sheet.getRange('C' + startRow).getValue(),
-        director: sheet.getRange('C' + (startRow + 1)).getValue(),
-        td: sheet.getRange('C' + (startRow + 2)).getValue(),
-        dakman: sheet.getRange('C' + (startRow + 3)).getValue(),
-        ap: sheet.getRange('C' + (startRow + 4)).getValue(),
-        xpr: sheet.getRange('C' + (startRow + 5)).getValue(),
-        oots: sheet.getRange('C' + (startRow + 6)).getValue(),
-        toc: sheet.getRange('C' + (startRow + 7)).getValue(),
-        dc1: sheet.getRange('C' + (startRow + 8)).getValue(),
-        dc2: sheet.getRange('C' + (startRow + 9)).getValue(),
-        dc3: sheet.getRange('C' + (startRow + 10)).getValue(),
-        dc4: sheet.getRange('C' + (startRow + 11)).getValue(),
-        wx1: sheet.getRange('C' + (startRow + 12)).getValue(),
-        wx2: sheet.getRange('C' + (startRow + 13)).getValue(),
-        wx3: sheet.getRange('C' + (startRow + 14)).getValue(),
+        producer2: sheet.getRange('C' + (startRow + 1)).getValue(),
+        director: sheet.getRange('C' + (startRow + 2)).getValue(),
+        td: sheet.getRange('C' + (startRow + 3)).getValue(),
+        dakman: sheet.getRange('C' + (startRow + 4)).getValue(),
+        ap: sheet.getRange('C' + (startRow + 5)).getValue(),
+        xpr: sheet.getRange('C' + (startRow + 6)).getValue(),
+        oots: sheet.getRange('C' + (startRow + 7)).getValue(),
+        toc: sheet.getRange('C' + (startRow + 8)).getValue(),
+        dc1: sheet.getRange('C' + (startRow + 9)).getValue(),
+        dc2: sheet.getRange('C' + (startRow + 10)).getValue(),
+        dc3: sheet.getRange('C' + (startRow + 11)).getValue(),
+        dc4: sheet.getRange('C' + (startRow + 12)).getValue(),
+        wx1: sheet.getRange('C' + (startRow + 13)).getValue(),
+        wx2: sheet.getRange('C' + (startRow + 14)).getValue(),
+        wx3: sheet.getRange('C' + (startRow + 15)).getValue(),
         cameras: cams
       };
       html = HtmlService.createTemplateFromFile('prompt');

@@ -1,0 +1,23 @@
+
+Created by Zachary Norvell, Class of 2026 
+
+# TO PUSH CODE TO APP SCRIPT
+-> clasp PUSH
+
+
+# TO PULL
+-> clasp PULL
+
+# TO RUN
+-> clasp RUN
+
+# Notes
+- ShowStartupDialog gets and displays the current values for the prompt
+- prompt give an html prompt to input names and game info
+- saveProductionData saves values to the google sheet
+
+# Finalized and Functional Sports
+- Football
+- Soccer
+- Volleyball
+

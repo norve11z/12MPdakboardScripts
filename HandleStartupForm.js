@@ -1,3 +1,11 @@
+    ////////////////////////////////////////////////////////////////////////////
+   // This was created by Zachary Norvell, a Class of 2026 Computer Engineer // 
+  // Intended for 12th Man Production DakBoards outside of Control Rooms    //
+ // Was Made in the Summer of 2025 with the Assistance of Summer Whitlock  //
+////////////////////////////////////////////////////////////////////////////
+
+
+
 function handleStartupForm(dateStr, timeStr, team, sport, isBroadcast) {
     Logger.log("Handling Start Up Form");
 
@@ -70,7 +78,7 @@ function handleStartupForm(dateStr, timeStr, team, sport, isBroadcast) {
     case 'SOC':
       if(isBroadcast) {
         sheetName = "SOC Broadcast";
-        offsets = [240, 210, 150, 120, 90, 70, 30, 15, 0];
+        offsets = [300, 240, 180, 180, 150, 120, 75, 15, 0];
         timeRange = "B5:B13";
       } else {
         sheetName = "SOC BigScreen";

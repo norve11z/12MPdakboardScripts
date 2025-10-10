@@ -1,3 +1,10 @@
+    ////////////////////////////////////////////////////////////////////////////
+   // This was created by Zachary Norvell, a Class of 2026 Computer Engineer // 
+  // Intended for 12th Man Production DakBoards outside of Control Rooms    //
+ // Was Made in the Summer of 2025 with the Assistance of Summer Whitlock  //
+////////////////////////////////////////////////////////////////////////////
+
+
 function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('📝 Edit Schedule')
@@ -6,8 +13,8 @@ function onOpen() {
     .addItem('🏀 Women\'s Basketball', 'showWBBstartupDialog')
     .addItem('⚾ Baseball', 'showBSBstartupDialog')
     .addItem('⚾ Softball', 'showSBstartupDialog')
-    .addItem('👟⚽🥅 Soccer', 'showSOCstartupDialog')
-    .addItem('🏐🙌🏐 Volleyball', 'showVBstartupDialog')
+    .addItem('👟⚽🥅 Soccer', 'showSOCstartupDialog') // Done
+    .addItem('🏐🙌🏐 Volleyball', 'showVBstartupDialog')  // Done
     .addToUi();
 }
 

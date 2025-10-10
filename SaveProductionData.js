@@ -1,3 +1,9 @@
+    ////////////////////////////////////////////////////////////////////////////
+   // This was created by Zachary Norvell, a Class of 2026 Computer Engineer // 
+  // Intended for 12th Man Production DakBoards outside of Control Rooms    //
+ // Was Made in the Summer of 2025 with the Assistance of Summer Whitlock  //
+////////////////////////////////////////////////////////////////////////////
+
 function saveProductionData(formData) {
     Logger.log("Saving Production Data");      
 
@@ -12,33 +18,34 @@ function saveProductionData(formData) {
   switch (formData.sport) {
     case 'FB':
       sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('FB VideoBoard');
-      prodRow = findRow("PRODUCER");
-      sheet.showRows(prodRow, prodRow + 14);
+      prodRow = findRow("GAME PROD");
+      sheet.showRows(prodRow, prodRow + 15);
       sheet.getRange('C' + prodRow).setValue(toCaps(formData.producer));
       sheet.getRange('C' + (prodRow + 1)).setValue(toCaps(formData.director));
-      sheet.getRange('C' + (prodRow + 2)).setValue(toCaps(formData.td));
-      sheet.getRange('C' + (prodRow + 3)).setValue(toCaps(formData.dakman));
-      sheet.getRange('C' + (prodRow + 4)).setValue(toCaps(formData.ap));
-      sheet.getRange('C' + (prodRow + 5)).setValue(toCaps(formData.xpr));
-      sheet.getRange('C' + (prodRow + 6)).setValue(toCaps(formData.oots));
-      sheet.getRange('C' + (prodRow + 7)).setValue(toCaps(formData.toc));
-      sheet.getRange('C' + (prodRow + 8)).setValue(toCaps(formData.dc1));
-      sheet.getRange('C' + (prodRow + 9)).setValue(toCaps(formData.dc2));
-      sheet.getRange('C' + (prodRow + 10)).setValue(toCaps(formData.dc3));
-      sheet.getRange('C' + (prodRow + 11)).setValue(toCaps(formData.dc4));
-      sheet.getRange('C' + (prodRow + 12)).setValue(toCaps(formData.wx1));
-      sheet.getRange('C' + (prodRow + 13)).setValue(toCaps(formData.wx2));
-      sheet.getRange('C' + (prodRow + 14)).setValue(toCaps(formData.wx3));
-      hideEmptyRows(3, prodRow, prodRow + 14);
+      sheet.getRange('C' + (prodRow + 2)).setValue(toCaps(formData.director));
+      sheet.getRange('C' + (prodRow + 3)).setValue(toCaps(formData.td));
+      sheet.getRange('C' + (prodRow + 4)).setValue(toCaps(formData.dakman));
+      sheet.getRange('C' + (prodRow + 5)).setValue(toCaps(formData.ap));
+      sheet.getRange('C' + (prodRow + 6)).setValue(toCaps(formData.xpr));
+      sheet.getRange('C' + (prodRow + 7)).setValue(toCaps(formData.oots));
+      sheet.getRange('C' + (prodRow + 8)).setValue(toCaps(formData.toc));
+      sheet.getRange('C' + (prodRow + 9)).setValue(toCaps(formData.dc1));
+      sheet.getRange('C' + (prodRow + 10)).setValue(toCaps(formData.dc2));
+      sheet.getRange('C' + (prodRow + 11)).setValue(toCaps(formData.dc3));
+      sheet.getRange('C' + (prodRow + 12)).setValue(toCaps(formData.dc4));
+      sheet.getRange('C' + (prodRow + 13)).setValue(toCaps(formData.wx1));
+      sheet.getRange('C' + (prodRow + 14)).setValue(toCaps(formData.wx2));
+      sheet.getRange('C' + (prodRow + 15)).setValue(toCaps(formData.wx3));
+      hideEmptyRows(3, prodRow, prodRow + 16);
 
       
       // Clear CAM rows 23/25 (labels in B, names in merged C:D)
-      sheet.getRange(prodRow+15, 2, 7, 1).clearContent(); // Column B
-      sheet.getRange(prodRow+15, 3, 7, 1).clearContent(); // Column C (merged with D)
+      sheet.getRange(prodRow+16, 2, 7, 1).clearContent(); // Column B
+      sheet.getRange(prodRow+16, 3, 7, 1).clearContent(); // Column C (merged with D)
 
       // Only write non-empty camera entries
       cams = formData.cameras || [];
-      writeRow = prodRow+15;
+      writeRow = prodRow+16;
       for (let i = 0; i < cams.length && writeRow <= writeRow+6; i++) {
         camName = cams[i];
         if (camName && camName.trim() !== '') {

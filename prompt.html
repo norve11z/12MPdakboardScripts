@@ -50,23 +50,24 @@
     <!----- MBB/WBB BROADCAST ------>
     <form id="MBB_BC_Form" style="display:none;">
       <label>IF A POSITON IS NOT USED LEAVE BLANK</label>
-      <label>DIRECTOR:</label><input type="text" id="director" value="<?= productionData.director ?>" required><br>
-      <label>AD:</label><input type="text" id="ad" value="<?= productionData.ad ?>" required><br>
-      <label>TD:</label><input type="text" id="td" value="<?= productionData.td ?>" required><br>
-      <label>AP:</label><input type="text" id="ap" value="<?= productionData.ap ?>" required><br>
-      <label>XPR:</label><input type="text" id="xpr" value="<?= productionData.xpr ?>" required><br>
-      <label>BUG:</label><input type="text" id="bug" value="<?= productionData.bug ?>" required><br>
-      <label>DC #1:</label><input type="text" id="dc1" value="<?= productionData.dc1 ?>" required><br>
-      <label>DC #2:</label><input type="text" id="dc2" value="<?= productionData.dc2 ?>" required><br>
-      <label>CAM3GRIP:</label><input type="text" id="cam3grip" value="<?= productionData.cam3grip ?>" required><br>
-      <label>CAM4GRIP:</label><input type="text" id="cam4grip" value="<?= productionData.cam4grip ?>" required><br>
+      <label>DIRECTOR:</label><input type="text" id="MB_director" value="<?= productionData.director ?>" required><br>
+      <label>AD:</label><input type="text" id="MB_ad" value="<?= productionData.ad ?>" required><br>
+      <label>TD:</label><input type="text" id="MB_td" value="<?= productionData.td ?>" required><br>
+      <label>AP:</label><input type="text" id="MB_ap" value="<?= productionData.ap ?>" required><br>
+      <label>XPR:</label><input type="text" id="MB_xpr" value="<?= productionData.xpr ?>" required><br>
+      <label>BUG:</label><input type="text" id="MB_bug" value="<?= productionData.bug ?>" required><br>
+      <label>DC #1:</label><input type="text" id="MB_dc1" value="<?= productionData.dc1 ?>" required><br>
+      <label>DC #2:</label><input type="text" id="MB_dc2" value="<?= productionData.dc2 ?>" required><br>
+      <label>CAM3GRIP:</label><input type="text" id="MB_cam3grip" value="<?= productionData.cam3grip ?>" required><br>
+      <label>CAM4GRIP:</label><input type="text" id="MB_cam4grip" value="<?= productionData.cam4grip ?>" required><br>
       <div>
-        <label>CAM 1:</label><input type="text" name="cam1" value="<?= productionData.cameras[0] || '' ?>" /><br>
-        <label>CAM 2:</label><input type="text" name="cam2" value="<?= productionData.cameras[1] || '' ?>" /><br>
-        <label>CAM 3:</label><input type="text" name="cam3" value="<?= productionData.cameras[2] || '' ?>" /><br>
-        <label>CAM 4:</label><input type="text" name="cam4" value="<?= productionData.cameras[3] || '' ?>" /><br>
-        <label>CAM 5:</label><input type="text" name="cam5" value="<?= productionData.cameras[4] || '' ?>" /><br>
-        <label>CAM 6:</label><input type="text" name="cam6" value="<?= productionData.cameras[5] || '' ?>" /><br>
+        <label>CAM 1:</label><input type="text" name="MBcam1" value="<?= productionData.cameras[0] || '' ?>" /><br>
+        <label>CAM 2:</label><input type="text" name="MBcam2" value="<?= productionData.cameras[1] || '' ?>" /><br>
+        <label>CAM 3:</label><input type="text" name="MBcam3" value="<?= productionData.cameras[2] || '' ?>" /><br>
+        <label>CAM 4:</label><input type="text" name="MBcam4" value="<?= productionData.cameras[3] || '' ?>" /><br>
+        <label>CAM 5:</label><input type="text" name="MBcam5" value="<?= productionData.cameras[4] || '' ?>" /><br>
+        <label>CAM 6:</label><input type="text" name="MBcam6" value="<?= productionData.cameras[5] || '' ?>" /><br>
+        <label>CAM 7:</label><input type="text" name="MBcam7" value="<?= productionData.cameras[6] || '' ?>" /><br>
       </div>
       <button type="button" id="submitButton" onclick="submitForm('MBB', true)">Submit</button>
     </form>
@@ -84,9 +85,6 @@
       <label>SLASH:</label><input type="text" id="slash" value="<?= productionData.slash ?>" required><br>
       <label>DC #1:</label><input type="text" id="dc1" value="<?= productionData.dc1 ?>" required><br>
       <label>DC #2:</label><input type="text" id="dc2" value="<?= productionData.dc2 ?>" required><br>
-      <div>
-        <label>CAM 1:</label><input type="text" name="cam1" value="<?= productionData.cameras[0] || '' ?>" /><br>
-      </div>
       <button type="button" id="submitButton" onclick="submitForm('MBB', false)">Submit</button>
     </form>
 

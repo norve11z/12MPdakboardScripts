@@ -100,22 +100,23 @@ function showStartupDialog(sport) {
       if(isBroadcast) {
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('MBB Broadcast');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
-        camsCount = 6;
-        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(24 + i, 3).getValue()); }
+        camsCount = 7;
+        startRow = findRow("PRODUCER");
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(startRow+11 + i, 3).getValue()); }
         productionData = {
           sport: sport,
           isBroadcast: true,
-          producer: sheet.getRange('C13').getValue(),
-          director: sheet.getRange('C14').getValue(),
-          ad: sheet.getRange('C15').getValue(),
-          td: sheet.getRange('C16').getValue(),
-          ap: sheet.getRange('C17').getValue(),
-          xpr: sheet.getRange('C18').getValue(),
-          bug: sheet.getRange('C19').getValue(),
-          dc1: sheet.getRange('C20').getValue(),
-          dc2: sheet.getRange('C21').getValue(),
-          cam3grip: sheet.getRange('C22').getValue(),
-          cam4grip: sheet.getRange('C23').getValue(),
+          producer: sheet.getRange('C' + startRow).getValue(),
+          director: sheet.getRange('C' + (startRow + 1)).getValue(),
+          ad: sheet.getRange('C' + (startRow + 2)).getValue(),
+          td: sheet.getRange('C' + (startRow + 3)).getValue(),
+          ap: sheet.getRange('C' + (startRow + 4)).getValue(),
+          xpr: sheet.getRange('C' + (startRow + 5)).getValue(),
+          bug: sheet.getRange('C' + (startRow + 6)).getValue(),
+          dc1: sheet.getRange('C' + (startRow + 7)).getValue(),
+          dc2: sheet.getRange('C' + (startRow + 8)).getValue(),
+          cam3grip: sheet.getRange('C' + (startRow + 9)).getValue(),
+          cam4grip: sheet.getRange('C' + (startRow + 10)).getValue(),
           cameras: cams
         };
       } else {
@@ -123,21 +124,21 @@ function showStartupDialog(sport) {
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('MBB BigScreen');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
         camsCount = 1;
-        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(23 + i, 3).getValue()); }
+        startRow = findRow("PRODUCER");
+        for (let i = 0; i < camsCount; i++) { cams.push(sheet.getRange(startRow+10 + i, 3).getValue()); }
         productionData = {
           sport: sport,
           isBroadcast: false,
-          producer: sheet.getRange('C13').getValue(),
-          director: sheet.getRange('C14').getValue(),
-          td: sheet.getRange('C15').getValue(),
-          showControl: sheet.getRange('C16').getValue(),
-          xpr: sheet.getRange('C17').getValue(),
-          wx1: sheet.getRange('C18').getValue(),
-          wx2: sheet.getRange('C19').getValue(),
-          slash: sheet.getRange('C20').getValue(),
-          dc1: sheet.getRange('C21').getValue(),
-          dc2: sheet.getRange('C22').getValue(),
-          cameras: cams
+          producer: sheet.getRange('C' + startRow).getValue(),
+          director: sheet.getRange('C' + (startRow + 1)).getValue(),
+          td: sheet.getRange('C' + (startRow + 2)).getValue(),
+          showControl: sheet.getRange('C' + (startRow + 3)).getValue(),
+          xpr: sheet.getRange('C' + (startRow + 4)).getValue(),
+          wx1: sheet.getRange('C' + (startRow + 5)).getValue(),
+          wx2: sheet.getRange('C' + (startRow + 6)).getValue(),
+          slash: sheet.getRange('C' + (startRow + 7)).getValue(),
+          dc1: sheet.getRange('C' + (startRow + 8)).getValue(),
+          dc2: sheet.getRange('C' + (startRow + 9)).getValue(),
         };
       }
       html = HtmlService.createTemplateFromFile('prompt');
@@ -145,8 +146,7 @@ function showStartupDialog(sport) {
       break;
 
 
-
-    case 'SFB':    
+    case 'SFB':
       if(isBroadcast) {
         sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('SFB Broadcast');
         SpreadsheetApp.getActiveSpreadsheet().setActiveSheet(sheet);
